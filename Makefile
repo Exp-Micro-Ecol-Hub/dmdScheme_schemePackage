@@ -11,7 +11,7 @@ SCHEMEMAKE := library(dmdScheme); \
 		overwrite = TRUE, \
 		index_template = 'index.md' \
 	); \
-		writeLines(scheme, $(SCHEMENAMEFILE)) \
+		writeLines(scheme, '$(SCHEMENAMEFILE)') \
 
 
 ########### scheme package ###########
