@@ -1,18 +1,33 @@
+SCHEMENAMEFILE := ./scheme.name
+
+REPO := ./../../dmdSchemeRepository/
 
 SCHEMEMAKE := library(dmdScheme); \
-	scheme_make( \
-		schemeDefinition = 'emeScheme.xlsx', \
+	scheme <- scheme_make( \
+		schemeDefinition = 'dmdScheme.xlsx', \
 		examples = list.dirs('examples/', recursive = FALSE), \
 		install_R_package = 'install_R_package.R', \
 		path = '.', \
-		overwrite = TRUE \
-	)
+		overwrite = TRUE, \
+		index_template = 'index.md' \
+	); \
+		writeLines(scheme, $(SCHEMENAMEFILE)) \
 
 
 ########### scheme package ###########
 
 scheme:
 	Rscript -e "$(SCHEMEMAKE)"
+
+update_repo:
+	cp $(shell cat ${SCHEMENAMEFILE}) $(REPO)/schemes/
+	@echo
+	@echo "##############################################################"
+	@echo "## Make sure to update the index at"
+	@echo "## $(REPO)/schemes/SCHEME_DEFINITIONS.yaml"
+	@echo "## as well!!!"
+	@echo "##############################################################"
+	@echo
 
 ############# Help targets #############
 

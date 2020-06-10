@@ -5,7 +5,6 @@ devtools::install_github(
   upgrade = "never"
 )
 
-
 rold <- getOption("repos")
 r <- rold
 
