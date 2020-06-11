@@ -38,6 +38,7 @@ list_variables:
 	make -pn | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq
 	@echo "#############################################"
 	@echo ""
+	bbedit $(REPO)/schemes/SCHEME_DEFINITIONS.yaml
 
 ## from https://stackoverflow.com/a/26339924/632423
 list_targets:
